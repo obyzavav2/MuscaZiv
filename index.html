@@ -442,7 +442,6 @@
     </footer>
     
     <script>
-        // Создание блесток
         function createSparkles() {
             const header = document.querySelector('header');
             for (let i = 0; i < 50; i++) {
@@ -454,12 +453,9 @@
                 header.appendChild(sparkle);
             }
         }
-        
-        // Анимация при загрузке
         window.addEventListener('load', () => {
             createSparkles();
             
-            // Анимация появления элементов
             const elements = document.querySelectorAll('h1, .title, .profile-img, p, h2, .interest-card, .rule-item, .social-link');
             elements.forEach((el, index) => {
                 setTimeout(() => {
@@ -469,7 +465,6 @@
             });
         });
         
-        // Предзагрузка стилей для плавного появления
         document.querySelectorAll('h1, .title, .profile-img, p, h2, .interest-card, .rule-item, .social-link').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
