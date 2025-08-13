@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МускаЗив - Герцогиня мух</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+        
+        :root {
+            --primary: #ff3366;
+            --secondary: #663399;
+            --dark: #1a1a1a;
+            --light: #f8f8f8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://s.iimg.su/s/12/g0B9KiWx1H7mHFBHNlf374jBA1Mbz0DnnKMjpokX.png') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--primary), 0 0 20px var(--primary);
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--secondary), 0 0 40px var(--secondary);
+            }
+        }
+        
+        .title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--light);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            margin: 20px auto;
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .about {
+            background-color: rgba(0,0,0,0.7);
+            position: relative;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://s.iimg.su/s/12/gKqnpLxx4nbjeLQl4OSXKOSoGOiE4hwIgNnVtuNT.png') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-align: center;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 15px auto;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .interests {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .interest-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .interest-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .interest-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .rules {
+            background-color: var(--dark);
+        }
+        
+        .rules-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .rule-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .rule-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .rule-number {
+            background-color: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 20px rgba(255,51,102,0.5);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: var(--dark);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            border: 2px solid var(--primary);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .title {
+                font-size: 1.3rem;
+            }
+            
+            .interest-card {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="container header-content">
+            <h1>Муска Вельзевул Первая</h1>
+            <p class="title">Ваша светлость, Герцогиня мух</p>
+            <img src="https://s.iimg.su/s/12/g0B9KiWx1H7mHFBHNlf374jBA1Mbz0DnnKMjpokX.png" alt="МускаЗив" class="profile-img floating">
+            <p>Так же откликаюсь на Зив</p>
+        </div>
+    </header>
+    
+    <section class="about">
+        <div class="container">
+            <h2>О Персоне</h2>
+            <p>Приветствую вас в моих владениях! Я - МускаЗив, Герцогиня мух и покровительница творческих душ.</p>
+            <p>Мои интересы разнообразны, как цвета радуги, но особенно я выделяю несколько направлений:</p>
+            
+            <div class="interests">
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Рисование</h3>
+                    <p>Выражаю свои мысли и эмоции через искусство, создавая уникальные визуальные образы.</p>
+                </div>
+                
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Инди игры</h3>
+                    <p>Ценитель нестандартных игровых вселенных и оригинальных механик от независимых разработчиков.</p>
+                </div>
+                
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-dice-d20"></i>
+                    </div>
+                    <h3>D&D</h3>
+                    <p>Страстный игрок и мастер подземелий, создающий захватывающие истории и запоминающиеся приключения.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="rules">
+        <div class="container">
+            <h2>Королевские Указы</h2>
+            <p>В моих владениях действуют определенные правила, которые стоит соблюдать:</p>
+            
+            <div class="rules-list">
+                <div class="rule-item">
+                    <div class="rule-number">1</div>
+                    <div class="rule-text">
+                        <h3>Политические дискуссии</h3>
+                        <p>Давайте без всяких полит-срачей на пол чата. Королевство должно оставаться зоной отдыха.</p>
+                    </div>
+                </div>
+                
+                <div class="rule-item">
+                    <div class="rule-number">2</div>
+                    <div class="rule-text">
+                        <h3>Спокойствие</h3>
+                        <p>Если сказали зачиллиться, значит видимо пора это сделать. Герцогиня знает, что говорит.</p>
+                    </div>
+                </div>
+                
+                <div class="rule-item">
+                    <div class="rule-number">3</div>
+                    <div class="rule-text">
+                        <h3>Спойлеры</h3>
+                        <p>Спойлерить нельзя (кроме моментов, когда просят)! Нарушители будут отправлены в подземелья.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p>Нарушение правил карается предупреждениями и банхамером!</p>
+                <img src="https://s.iimg.su/s/12/gKqnpLxx4nbjeLQl4OSXKOSoGOiE4hwIgNnVtuNT.png" alt="Правила" style="max-width: 300px; margin-top: 20px; border-radius: 15px; border: 3px solid var(--primary);">
+            </div>
+        </div>
+    </section>
+    
+    <section class="social">
+        <div class="container">
+            <h2>Королевские Владения</h2>
+            <p>Посетите мои другие владения в разных уголках интернета:</p>
+            
+            <div class="social-links">
+                <a href="https://www.twitch.tv/muscaziv" class="social-link" target="_blank">
+                    <i class="fab fa-twitch"></i>
+                </a>
+                <a href="https://twitter.com/muscaziv" class="social-link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://vk.com/muscaziv" class="social-link" target="_blank">
+                    <i class="fab fa-vk"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Герцогиня Мух - МускаЗив. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Создание блесток
+        function createSparkles() {
+            const header = document.querySelector('header');
+            for (let i = 0; i < 50; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = Math.random() * 100 + 'vw';
+                sparkle.style.top = Math.random() * 100 + 'vh';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                header.appendChild(sparkle);
+            }
+        }
+        
+        // Анимация при загрузке
+        window.addEventListener('load', () => {
+            createSparkles();
+            
+            // Анимация появления элементов
+            const elements = document.querySelectorAll('h1, .title, .profile-img, p, h2, .interest-card, .rule-item, .social-link');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+        
+        // Предзагрузка стилей для плавного появления
+        document.querySelectorAll('h1, .title, .profile-img, p, h2, .interest-card, .rule-item, .social-link').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+    </script>
+</body>
+</html>
